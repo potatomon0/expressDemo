@@ -12,16 +12,16 @@ app.get('/',(req,res)=>{
 app.get('/home',(req,res)=>{
     res.render("Home")
 })
-app.get('/:groceriesIndex',(req,res)=>{
-    res.send(groceries[req.params.groceriesIndex])
-})
 // app.get('/:groceriesIndex',(req,res)=>{
-//     if(groceries[req.params.index]){
-//         res.send(groceries[req.params.groceriesIndex])
-//     }else{
-//         res.send(`cannot find: ${req.params.groceriesIndex}`)
-//     }
+//     res.send(groceries[req.params.groceriesIndex])
 // })
+app.get('/:groceriesIndex',(req,res)=>{
+    if(groceries[req.params.groceriesIndex]){
+        res.send(groceries[req.params.groceriesIndex])
+    }else{
+        res.send(`cannot find: ${req.params.groceriesIndex}`)
+    }
+})
 let port = 3000
 app.listen(port,(req,res)=>{
     console.log(`Server is now listening ton Port ${port}`)
